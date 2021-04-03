@@ -5,21 +5,24 @@ header('Content-Type: application/json; charset=UTF-8');
 
 include_once '../config/database.php';
 include_once '../objects/praticien.php';
+include_once '../config/session.php';
 
+//debut token
+$user = filter_input(INPUT_POST,'user',FILTER_SANITIZE_SPECIAL_CHARS);
+$pwd = filter_input(INPUT_POST,'pwd',FILTER_SANITIZE_SPECIAL_CHARS);
+$token = filter_input(INPUT_POST,'token',FILTER_SANITIZE_SPECIAL_CHARS);
+$timer = filter_input(INPUT_POST,'valid',FILTER_SANITIZE_SPECIAL_CHARS);
+
+$login = new Session();
+$login->login($user, $pwd, $token ,$timer);
+
+//BDD connection
 $database = new Database();
 $db = $database->getConnection();
 
-$DepPraticien = new Praticien($db);
-$user = isset($_GET['user']) ? $_GET['user'] : die();
-$pwd = isset($_GET['pwd']) ? $_GET['pwd'] : die();
 // read the details of product to be edited
-if($user == "gsb"&& $pwd== "gsb"){
-  $stmt = $DepPraticien->readDep();
-}else{
-  echo json_encode(
-      array("message" => "Erreur login")
-  );
-}
+$DepPraticien = new Praticien($db);
+$stmt = $DepPraticien->readDep();
 $num = $stmt->rowCount();
 
 if($num>0){

@@ -8,6 +8,8 @@ class Database{
   private $password = "Tprik12345";
   public $conn;
 
+
+
   // get the database connection
   public function getConnection(){
 
@@ -22,5 +24,6 @@ class Database{
 
       return $this->conn;
   }
+
 }
 ?>
