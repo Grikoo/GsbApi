@@ -1,7 +1,7 @@
 # GsbApi
 Actuellement ce que l'on peut obtenir avec l'api :
 
-# login
+# LOGIN
 login : GSB / password : GSB 
 
 il faut se log grace a connection pour recevoir son token et son temp de validité
