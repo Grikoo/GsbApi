@@ -7,7 +7,7 @@ login : GSB / password : GSB
 il faut se log grace a connection pour recevoir son token et son temp de validité
 il faut les POST dans le BODY avec le login et password
 
-# RAPPORT VISITE (en cours)
+# RAPPORT VISITE (non secu)
 GET rapport_visite - /rapport_visite/read.php
 
 GET Max numéro rapport_visite - /rapport_visite/readMax.php
@@ -25,12 +25,12 @@ POST praticien - /praticien/read.php
 
 POST praticien - /praticien/readNbDep.php?id= id : dp_praticien (numero du departement)
 
-# medicament (non securisé)
+# medicament
 POST with id, medicament - /medicament/read_one.php?id=
 
 POST medicament - /medicament/read.php
 
-# VISITEUR (non securisé)
+# VISITEUR
 GET visiteur - /visiteur/read.php
 
 GET with id, visiteur - /visiteur/read_one.php?id=
