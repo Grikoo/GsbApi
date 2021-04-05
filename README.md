@@ -25,6 +25,8 @@ POST praticien - /praticien/read.php
 
 POST praticien - /praticien/readNbDep.php?id= id : dp_praticien (numero du departement)
 
+POST praticien - /praticien/readNomPrat.php?id= id : nom_praticien (nom du praticien)
+
 # medicament
 POST with id, medicament - /medicament/read_one.php?id= id : id_medicament
 
