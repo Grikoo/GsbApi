@@ -7,7 +7,7 @@ login : GSB / password : GSB
 il faut se log grace a connection pour recevoir son token et son temp de validité
 il faut les POST dans le BODY avec le login et password
 
-# RAPPORT VISITE (non secu)
+# RAPPORT VISITE (create a verif)
 GET rapport_visite - /rapport_visite/read.php
 
 GET Max numéro rapport_visite - /rapport_visite/readMax.php
