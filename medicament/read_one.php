@@ -8,6 +8,16 @@ header('Content-Type: application/json');
 // include database and object files
 include_once '../config/database.php';
 include_once '../objects/medicament.php';
+include_once '../config/session.php';
+
+//debut token
+$user = filter_input(INPUT_POST,'user',FILTER_SANITIZE_SPECIAL_CHARS);
+$pwd = filter_input(INPUT_POST,'pwd',FILTER_SANITIZE_SPECIAL_CHARS);
+$token = filter_input(INPUT_POST,'token',FILTER_SANITIZE_SPECIAL_CHARS);
+$timer = filter_input(INPUT_POST,'valid',FILTER_SANITIZE_SPECIAL_CHARS);
+
+$login = new Session();
+$login->login($user, $pwd, $token ,$timer);
 
 // get database connection
 $database = new Database();
@@ -17,7 +27,15 @@ $db = $database->getConnection();
 $Unmedicament = new medicament($db);
 
 // set ID property of product to be edited
-$Unmedicament->depot_legal = isset($_GET['id']) ? $_GET['id'] : die();
+$idmed = filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT);
+if($idmed!=null){
+  $Unmedicament->depot_legal = $idmed;
+}else{
+  echo json_encode(
+    array("message" => "erreur id")
+  );
+  die();
+}
 
 // read the details of product to be edited
 $Unmedicament->readOne();
