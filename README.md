@@ -8,9 +8,9 @@ il faut se log grace a connection pour recevoir son token et son temp de validit
 il faut les POST dans le BODY avec le login et password
 
 # RAPPORT VISITE (create a verif)
-GET rapport_visite - /rapport_visite/read.php
+POST rapport_visite - /rapport_visite/read.php
 
-GET Max numéro rapport_visite - /rapport_visite/readMax.php
+POST Max numéro rapport_visite - /rapport_visite/readMax.php
 
 POST rapport_visite - /rapport_visite/create.PHP
 
@@ -37,9 +37,9 @@ id : id_medicament
 POST medicament - /medicament/read.php
 
 # VISITEUR
-GET visiteur - /visiteur/read.php
+POST visiteur - /visiteur/read.php
 
-GET with id, visiteur - /visiteur/read_one.php?id= 
+POST with id, visiteur - /visiteur/read_one.php?id= 
 id : id_visiteur
 
 
