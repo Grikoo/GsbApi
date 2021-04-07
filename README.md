@@ -2,7 +2,7 @@
 Actuellement ce que l'on peut obtenir avec l'api :
 
 # LOGIN
-login : GSB / password : GSB 
+user : gsb / pwd : gsb 
 
 il faut se log grace a connection pour recevoir son token et son temp de validité
 il faut les POST dans le BODY avec le login et password
