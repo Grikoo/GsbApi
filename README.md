@@ -32,7 +32,7 @@ id : nom_praticien (nom du praticien)
 
 # medicament
 POST with id, medicament - /medicament/read_one.php?id= 
-id : id_medicament
+id : depot_legal
 
 POST medicament - /medicament/read.php
 
