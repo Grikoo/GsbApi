@@ -27,7 +27,7 @@ $db = $database->getConnection();
 $Unmedicament = new medicament($db);
 
 // set ID property of product to be edited
-$idmed = filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT);
+$idmed = filter_input(INPUT_GET,'id',FILTER_SANITIZE_SPECIAL_CHARS);
 if($idmed!=null){
   $Unmedicament->depot_legal = $idmed;
 }else{

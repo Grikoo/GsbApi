@@ -2,15 +2,15 @@
 Actuellement ce que l'on peut obtenir avec l'api :
 
 # LOGIN
-login : GSB / password : GSB 
+user : gsb / pwd : gsb 
 
 il faut se log grace a connection pour recevoir son token et son temp de validité
 il faut les POST dans le BODY avec le login et password
 
 # RAPPORT VISITE (create a verif)
-GET rapport_visite - /rapport_visite/read.php
+POST rapport_visite - /rapport_visite/read.php
 
-GET Max numéro rapport_visite - /rapport_visite/readMax.php
+POST Max numéro rapport_visite - /rapport_visite/readMax.php
 
 POST rapport_visite - /rapport_visite/create.PHP
 
@@ -32,14 +32,14 @@ id : nom_praticien (nom du praticien)
 
 # medicament
 POST with id, medicament - /medicament/read_one.php?id= 
-id : id_medicament
+id : depot_legal
 
 POST medicament - /medicament/read.php
 
 # VISITEUR
-GET visiteur - /visiteur/read.php
+POST visiteur - /visiteur/read.php
 
-GET with id, visiteur - /visiteur/read_one.php?id= 
+POST with id, visiteur - /visiteur/read_one.php?id= 
 id : id_visiteur
 
 
