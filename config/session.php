@@ -37,5 +37,11 @@ class Session{
         }
         $this->$user = $user;
         $this->$pwd = $pwd;
+        $tok_timer = array();
+        $tok_timer_item=array(
+        "token"=>$token,
+        "valid"=>$timer
+        );
+        array_push($tok_timer,$tok_timer_item);
     }
 }
