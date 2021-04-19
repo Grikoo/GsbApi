@@ -4,24 +4,25 @@ include_once './config/session.php';
 
 //debut token
 $clefprivee = '1234';
-$user = filter_input(INPUT_POST,'user',FILTER_SANITIZE_SPECIAL_CHARS);
-$pwd = filter_input(INPUT_POST,'pwd',FILTER_SANITIZE_SPECIAL_CHARS);
+//$user = filter_input(INPUT_POST,'user',FILTER_SANITIZE_SPECIAL_CHARS);
+//$pwd = filter_input(INPUT_POST,'pwd',FILTER_SANITIZE_SPECIAL_CHARS);
+$json = file_get_contents('php://input');
+$object = json_decode($json, true);
+$pwd = $object['pwd'];
+$user = $object['user'];
 $timer = time();
 if($user != null){
     $token = sha1($user.$timer.$pwd.$clefprivee);
-    echo "Parametre :";
-    echo "<br>";
-    echo "Voici votre token :  token=".$token;
-    echo "<br>";
-    echo " Voici votre temps de validité :  valid=".$timer;
-    echo "<br>";
-    echo "la durée du token est de 20minutes";
-    echo "<br>";
-    echo "Ne pas oublier de poster les logins dans le body";
     $login = new Session();
     $testlogin = $login->login($user, $pwd, $token ,$timer);
-}else{
-    header("Location: /GsbApi/connection.php");
+    header('Content-Type: application/json');
+    $tok_timer_item=array(
+        "token"=>$token,
+        "valid"=>$timer
+    );
+    echo json_encode($tok_timer_item, JSON_PRETTY_PRINT);
 }
+
+
 
 ?>
