@@ -44,7 +44,7 @@ class rapport_visite{
     public function create(){
 
         // query to insert record
-        $query = "INSERT INTO rapport_visite(id_visiteur, id_praticien, date_rapport, bilan) VALUES (?,?,?,?)";
+        $query = "INSERT INTO rapport_visite(id_visiteur, id_praticien, date_rapport, bilan, motif) VALUES (?,?,?,?,?)";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -63,6 +63,37 @@ class rapport_visite{
 
 
         return true;
+
+    }
+    public function getRapportofpraticien(){
+        $query = "SELECT * from rapport_visite where rapport_visite.id_praticien = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->id_praticien);
+
+        // execute query
+        $stmt->execute();
+        $rows = $stmt->fetchall(PDO::FETCH_ASSOC);
+        $num = $stmt->rowCount();
+
+        if($num>0){
+            if($num>0){
+                $rapport_visite["rapport_visite"]=array();
+                $row = array();
+                foreach($rows as $row){
+                  extract($row,EXTR_OVERWRITE);
+                    $rapport_item=array(
+                      "id_praticien" => $id_praticien,
+                      "date" => $date_rapport,
+                      "motif" => $motif,
+                      "bilan" => $bilan
+                    );
+                    array_push($rapport_visite["rapport_visite"], $rapport_item);
+                }
+                echo json_encode($rapport_visite, JSON_PRETTY_PRINT);
+              }
+        }
+
+        
 
     }
 }

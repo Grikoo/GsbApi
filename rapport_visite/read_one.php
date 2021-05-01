@@ -27,35 +27,12 @@ $db = $database->getConnection();
 
 $rapportvisite = new rapport_visite($db);
 
-if(!isset($_GET['id_visiteur']) OR !isset($_GET['motif']) OR !isset($_GET['id_praticien']) OR !isset($_GET['bilan']) OR empty($_GET['id_visiteur']) OR empty($_GET['motif']) OR empty($_GET['id_praticien']) OR empty($_GET['bilan']))
-{
-  echo '{';
-      echo '"message": "Des informations sont manquantes."';
-  echo '}';
-}
-else {
 
   // set product property values
-  $rapportvisite->id_visiteur = $_GET['id_visiteur'];
   $rapportvisite->id_praticien = $_GET['id_praticien'];
-  $rapportvisite->date_rapport = date('Y-m-d H:i:s');
-  $rapportvisite->bilan = $_GET['bilan'];
-  $rapportvisite->motif = $_GET['motif'];
 
   // create the product
-  if($rapportvisite->create()){
-      echo '{';
-          echo '"message": "Rapport de visite créer."';
-      echo '}';
-  }
-
-  // if unable to create the product, tell the user
-  else{
-      echo '{';
-          echo '"message": "Impossible de créer le rapport de visite."';
-      echo '}';
-  }
-}
+  $rapportvisite->getRapportofpraticien();
 
 
 

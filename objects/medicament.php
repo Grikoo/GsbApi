@@ -24,7 +24,7 @@ class medicament{
 
     public function read(){
 
-      $query = "SELECT * FROM medicament INNER JOIN famille";
+      $query = "SELECT * FROM medicament INNER JOIN famille where famille.id_famille = medicament.id_famille";
 
       $stmt = $this->conn->prepare($query);
       $stmt->execute();

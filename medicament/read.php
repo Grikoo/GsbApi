@@ -8,10 +8,12 @@ include_once '../objects/medicament.php';
 include_once '../config/session.php';
 
 //debut token
-$user = filter_input(INPUT_POST,'user',FILTER_SANITIZE_SPECIAL_CHARS);
-$pwd = filter_input(INPUT_POST,'pwd',FILTER_SANITIZE_SPECIAL_CHARS);
-$token = filter_input(INPUT_POST,'token',FILTER_SANITIZE_SPECIAL_CHARS);
-$timer = filter_input(INPUT_POST,'valid',FILTER_SANITIZE_SPECIAL_CHARS);
+$json = file_get_contents('php://input');
+$object = json_decode($json, true);
+$pwd = $object['pwd'];
+$user = $object['user'];
+$timer = $object['valid'];
+$token = $object['token'];
 
 $login = new Session();
 $login->login($user, $pwd, $token ,$timer);
