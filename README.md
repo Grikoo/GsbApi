@@ -4,10 +4,10 @@ Actuellement ce que l'on peut obtenir avec l'api :
 # LOGIN
 user : gsb / pwd : gsb 
 
-il faut se log grace a connection pour recevoir son token et son temp de validité
+il faut se log grace a connection pour recevoir son token et son temps de validité
 il faut les POST dans le BODY avec le login et password
 
-# RAPPORT VISITE (create a verif)
+# RAPPORT VISITE 
 POST rapport_visite - /rapport_visite/read.php
 
 POST Max numéro rapport_visite - /rapport_visite/readMax.php
