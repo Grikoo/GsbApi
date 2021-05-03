@@ -31,7 +31,7 @@ class rapport_visite{
     public function readMax(){
 
         // query to read single record
-        $query = "SELECT MAX(id_rapport)+1 AS MAX  FROM rapport_visite";
+        $query = "SELECT COUNT(*) AS MAX  FROM rapport_visite";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
